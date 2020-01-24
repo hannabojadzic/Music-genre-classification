@@ -16,11 +16,7 @@ MEL_KWARGS = {
 new_model = tf.keras.models.load_model('models/model.h5')
 # Show the model architecture
 new_model.summary()
-def get_layer_output_function(model, layer_name):
-    input = model.get_layer('input').input
-    output = model.get_layer(layer_name).output
-    f = backend.function([input, backend.learning_phase()], [output])
-    return lambda x: f([x, 0])[0]  # learning_phase = 0 means test
+
 def load_track(filename, enforce_shape=None):
     new_input, sample_rate = lbr.load(filename, mono=True)
     features = lbr.feature.melspectrogram(new_input, **MEL_KWARGS).T

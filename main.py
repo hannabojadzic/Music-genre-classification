@@ -67,7 +67,7 @@ def train_model(data, model_path):
     model_input = Input(input_shape, name='input')
     layer = model_input
     for i in range(N_LAYERS):
-        # second convolutional layer names are used by extract_filters.py
+        
         layer = Convolution1D(
             filters=256,
             kernel_size=5,
